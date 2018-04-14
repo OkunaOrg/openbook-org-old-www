@@ -1,8 +1,19 @@
 <img alt="Open book logo" src="https://github.com/OpenBookOrg/www.open-book.org/blob/master/src/assets/logo-repos.png?raw=true" width="250">
 
-# www.open-book.org
+## What is this?
 
-The code for [www.open-book.org](https://www.open-book.org).
+This is the code for [www.open-book.org](https://www.open-book.org).
+
+## Table of contents
+
+- [Requirements](#requirements)
+- [Project overview](#project-overview)
+- [Contributing](#contributing)
+    + [Code of Conduct](#code-of-conduct)
+    + [License](#license)
+    + [Other issues](#other-issues)
+    + [Git commit message conventions](#git-commit-message-conventions)
+- [Getting started](#getting-started)
 
 ## Requirements
 
