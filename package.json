@@ -21,7 +21,10 @@
     },
     "homepage": "https://www.open-book.org",
     "dependencies": {
-        "normalize.css": "^8.0.0"
+        "buefy": "^0.6.5",
+        "bulma": "^0.7.0",
+        "normalize.css": "^8.0.0",
+        "vue": "^2.5.16"
     },
     "devDependencies": {
         "ajv": "^6.3.0",

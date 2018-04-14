@@ -1,0 +1,17 @@
+
+// Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "../../node_modules/bulma/sass/utilities/functions.sass";
+
+// Set custom variables
+$family-serif: "Arial", sans-serif;
+
+// Set the derived variables
+$primary: #690ddc;
+$primary-invert: white;
+// Use the new serif family
+$family-primary: $family-serif;
+
+
+// Import the rest of Bulma
+@import "../../node_modules/bulma/bulma.sass";
