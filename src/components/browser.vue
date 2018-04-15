@@ -26,14 +26,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="open-book-body">
-                    <div class="open-book-timeline">
-                        <div class="open-book-post open-book-post--text">
+                <div class="open-book-container">
+                    <div class="open-book-body">
+                        <div class="open-book-body-timeline">
+                            <div class="open-book-post open-book-post--text">
+
+                            </div>
+                        </div>
+                        <div class="open-book-body-chats">
 
                         </div>
-                    </div>
-                    <div class="open-book-chats">
-
                     </div>
                 </div>
             </div>
@@ -53,8 +55,7 @@
 
     $height: 500px;
 
-
-    .browser-window-container{
+    .browser-window-container {
         padding: 0 1rem;
     }
 
@@ -66,6 +67,7 @@
         border-radius: 5px;
         background-color: #fff;
     }
+
     .browser-window .top-bar {
         height: 30px;
         border-radius: 5px 5px 0 0;
@@ -73,6 +75,7 @@
         border-bottom: thin solid darken($bottomColor, 1%);
         background: linear-gradient($topColor, $bottomColor);
     }
+
     .browser-window .circle {
         height: 8px;
         width: 8px;
@@ -80,7 +83,11 @@
         border-radius: 50%;
         background-color: lighten($topColor, 10%);
     }
-    .browser-window .circles { margin: 5px 11px; }
+
+    .browser-window .circles {
+        margin: 5px 11px;
+    }
+
     .browser-window .browser-content {
         width: 100%;
         height: 100%;
@@ -89,29 +96,30 @@
         background-color: #fafafa;
     }
 
-    .clear { clear: both; }
+    .clear {
+        clear: both;
+    }
 
-
-    .open-book-container{
+    .open-book-container {
         display: flex;
         width: 100%;
         max-width: 640px;
         margin: 0 auto;
     }
 
-    .open-book-header{
+    .open-book-header {
         width: 100%;
         background-color: #690ddc;
         height: 30px;
         display: flex;
 
-        &-logo{
+        &-logo {
             width: 55px;
             display: flex;
             justify-content: center;
             align-items: center;
 
-            &__icon{
+            &__icon {
                 height: 10px;
                 width: 10px;
                 border-radius: 50%;
@@ -119,32 +127,52 @@
             }
         }
 
-        &-actions{
+        &-actions {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            &__search{
+            &__search {
                 border-radius: 5px;
                 background: white;
                 width: 40%;
                 height: 10px;
             }
 
-            &-buttons{
+            &-buttons {
                 width: 100px;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
             }
 
-            &-button{
+            &-button {
                 height: 10px;
                 width: 20px;
                 border-radius: 10%;
                 background: rgba(0, 0, 0, 0.25);
             }
+        }
+    }
+
+    .open-book-body {
+
+        display: flex;
+        justify-content: space-between;
+
+        &-timeline {
+            width: 60%;
+            height: 100%;
+            background: gray;
+            border-radius: 5px;
+        }
+
+        &-chats{
+            width: 20%;
+            height: 100%;
+            background: gray;
+            border-radius: 5px;
         }
     }
 
