@@ -1,3 +1,10 @@
-
 @import "~normalize.css/normalize.css";
+
+@import "variables";
+
 @import "bulma";
+@import "fontawesome";
+@import "modifiers/index";
+
+@import "layout/index";
+@import "sections/index";

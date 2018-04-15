@@ -3,11 +3,17 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    target: 'web',
     devtool: 'eval-cheap-module-source-map',
     entry: './src/index.js',
     devServer: {
         port: 8080,
         contentBase: path.join(__dirname, "dist")
+    },
+    resolve: {
+        alias: {
+            vue$: 'vue/dist/vue.common.js',
+        }
     },
     module: {
         rules: [
@@ -18,6 +24,14 @@ module.exports = {
                 options: {
                     presets: ['env']
                 }
+            },
+            {
+                test: /\.exec\.js$/,
+                use: [ 'script-loader' ]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
             },
             {
                 test: /\.(scss|css|sass)$/,
@@ -47,8 +61,7 @@ module.exports = {
                     }
                     // Please note we are not running postcss here
                 ]
-            }
-            ,
+            },
             {
                 // Load all images as base64 encoding if they are smaller than 8192 bytes
                 test: /\.(png|jpg|gif)$/,
@@ -62,6 +75,10 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(ogg|mp3|mp4|wav|mpe?g)$/i,
+                use: 'file-loader'
             }
         ],
     },

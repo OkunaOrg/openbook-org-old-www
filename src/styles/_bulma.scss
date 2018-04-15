@@ -1,17 +1,30 @@
-
 // Import the initial variables
 @import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
 @import "../../node_modules/bulma/sass/utilities/functions.sass";
 
+// Other variables are imported indirectly in index.scss
+
 // Set custom variables
-$family-serif: "Arial", sans-serif;
+$family-serif: $primary-font;
 
 // Set the derived variables
 $primary: #690ddc;
-$primary-invert: white;
+$primary-invert: $open-book-primary-color-invert;
 // Use the new serif family
 $family-primary: $family-serif;
 
 
 // Import the rest of Bulma
 @import "../../node_modules/bulma/bulma.sass";
+
+.navbar{
+    box-shadow: none !important;
+}
+
+.hero{
+    overflow: hidden;
+}
+
+.hero-footer{
+    max-height: 210px;
+}
