@@ -192,6 +192,8 @@
         width: 100%;
         height: 70px;
         border-radius: 5px;
+        pointer-events: none;
+        outline: none;
 
         &-content{
             display: flex;
@@ -212,13 +214,16 @@
             return {
                 posts: [
                     {
-                        content: '🎉'
+                      content: '🎉'
                     },
                     {
                         content: '🙈'
                     },
                     {
                         content: '🤔'
+                    },
+                    {
+                        content: '🙊'
                     },
                     {
                         content: '😎'
@@ -235,6 +240,7 @@
         mounted() {
             const timelineComponent = this.$refs.timeline;
             const slider = jQuery(timelineComponent).slick({
+                accessibility: false,
                 infite: true,
                 vertical: true,
                 autoplay: false,
