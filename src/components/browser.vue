@@ -26,16 +26,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="open-book-container">
-                    <div class="open-book-body">
-                        <div class="open-book-body-timeline">
-                            <div class="open-book-post open-book-post--text">
-
-                            </div>
-                        </div>
-                        <div class="open-book-body-chats">
+                <div class="open-book-body">
+                    <div class="open-book-body-timeline">
+                        <div class="open-book-post open-book-post--text">
 
                         </div>
+                    </div>
+                    <div class="open-book-body-chats">
+
                     </div>
                 </div>
             </div>
@@ -157,21 +155,25 @@
     }
 
     .open-book-body {
-
-        display: flex;
+        @extend .open-book-container;
         justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        margin-top: 10px;
 
         &-timeline {
-            width: 60%;
+            margin: 10px;
+            width: 70%;
             height: 100%;
-            background: gray;
+            background: rgba(128, 128, 128, 0.3);
             border-radius: 5px;
         }
 
-        &-chats{
+        &-chats {
+            margin:10px;
             width: 20%;
             height: 100%;
-            background: gray;
+            background: rgba(128, 128, 128, 0.3);
             border-radius: 5px;
         }
     }
