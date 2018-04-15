@@ -1,7 +1,10 @@
 require('./styles/index.scss');
+
 window['jQuery'] = window['$'] = require('jquery');
 require('slick-carousel');
+
 require('./scripts/typewriter.exec.js');
+require('./scripts/fontawesome-all.exec');
 
 import Vue from 'vue';
 import obBrowser from './components/browser.vue';
