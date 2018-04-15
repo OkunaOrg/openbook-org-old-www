@@ -23,63 +23,74 @@
 </head>
 <body>
 <!-- Site content STARTS -->
-<section class="hero is-fullheight is-primary is-bold" id="main">
-    <div class="hero-head is-primary">
-        <header>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item is-size-4" href="https://open-book.org">
-                            <strong>Open</strong>book
-                        </a>
-                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <div class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="navbar-item">
-                                Introduction
+<div id="app">
+    <section class="hero is-fullheight is-primary is-bold fullpage-section" id="main">
+        <div class="hero-head is-primary">
+            <header>
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item is-size-4" href="https://open-book.org">
+                                <strong>Open</strong>book
                             </a>
-                            <a class="navbar-item">
-                                The why
-                            </a>
-                            <a class="navbar-item">
-                                The solution
-                            </a>
-                            <a class="navbar-item">
-                                Our vision
+                            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
                             </a>
                         </div>
+                        <div class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item">
+                                    Introduction
+                                </a>
+                                <a class="navbar-item">
+                                    The why
+                                </a>
+                                <a class="navbar-item">
+                                    The solution
+                                </a>
+                                <a class="navbar-item">
+                                    Our vision
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </header>
-    </div>
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title is-size-2 is-size-3-mobile">
-                Hello <span id="hello-subject">world.</span>
-            </h1>
-            <h2 class="subtitle">
-                We're <strong>Open</strong>book .
-            </h2>
-            <h3>
-                The <strong>open</strong> and <strong>secure</strong> social network.
-            </h3>
+                </nav>
+            </header>
         </div>
-    </div>
-    <div class="hero-footer has-text-centered">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-size-2 is-size-3-mobile">
+                    Hello <span id="hello-subject">world.</span>
+                </h1>
+                <h2 class="subtitle">
+                    We're <strong>Open</strong>book .
+                </h2>
+                <h3>
+                    The <strong>open</strong> and <strong>secure</strong> social network.
+                </h3>
+            </div>
+        </div>
+        <div class="hero-footer has-text-centered">
+            <div class="container">
+                <ob-browser></ob-browser>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="footer">
         <div class="container">
-            <ob-browser></ob-browser>
+            <div class="content has-text-centered">
+                <p>
+                    Made with ❤️ in planet earth.
+                </p>
+                <p>
+                    The Openbook Organization © 2018
+                </p>
+            </div>
         </div>
-    </div>
-</section>
-<footer>
-
-</footer>
+    </footer>
+</div>
 <!-- Site content ENDS -->
 </body>
 </html>
