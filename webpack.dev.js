@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    target: 'web',
     devtool: 'eval-cheap-module-source-map',
     entry: './src/index.js',
     devServer: {
@@ -23,6 +24,10 @@ module.exports = {
                 options: {
                     presets: ['env']
                 }
+            },
+            {
+                test: /\.exec\.js$/,
+                use: [ 'script-loader' ]
             },
             {
                 test: /\.vue$/,
