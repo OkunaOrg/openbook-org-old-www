@@ -47,8 +47,7 @@ module.exports = {
                     }
                     // Please note we are not running postcss here
                 ]
-            }
-            ,
+            },
             {
                 // Load all images as base64 encoding if they are smaller than 8192 bytes
                 test: /\.(png|jpg|gif)$/,
@@ -62,6 +61,10 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(ogg|mp3|mp4|wav|mpe?g)$/i,
+                use: 'file-loader'
             }
         ],
     },
