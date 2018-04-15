@@ -9,6 +9,11 @@ module.exports = {
         port: 8080,
         contentBase: path.join(__dirname, "dist")
     },
+    resolve: {
+        alias: {
+            vue$: 'vue/dist/vue.common.js',
+        }
+    },
     module: {
         rules: [
             {
@@ -18,6 +23,10 @@ module.exports = {
                 options: {
                     presets: ['env']
                 }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
             },
             {
                 test: /\.(scss|css|sass)$/,

@@ -1,5 +1,12 @@
 require('./styles/index.scss');
-// Turn off video.js analytics!
-window.HELP_IMPROVE_VIDEOJS = false;
 
-require('video.js');
+
+import Vue from 'vue';
+import obBrowser from './components/browser.vue';
+
+new Vue({
+    el: '#main',
+    components: {
+        obBrowser
+    },
+});
