@@ -16,3 +16,7 @@ $family-primary: $family-serif;
 
 // Import the rest of Bulma
 @import "../../node_modules/bulma/bulma.sass";
+
+.navbar{
+    box-shadow: none !important;
+}
