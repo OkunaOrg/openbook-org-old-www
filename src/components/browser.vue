@@ -8,23 +8,33 @@
                     <div class="circle circle-green"></div>
                 </div>
             </div>
-            <div class='content'>
+            <div class='browser-content'>
+                <div class="open-book-header">
+                    <div class="open-book-container">
+                        <div class="open-book-header-logo">
+                            <div class="open-book-header-logo__icon"></div>
+                        </div>
+                        <div class="open-book-header-actions">
+                            <div class="open-book-header-actions__search">
 
-            </div>
-            <div class="dev-tools">
-                <div class="bar">
-                    <div class="dev-bar-content"></div>
-                    <div class="close">X</div>
-                    <div class="clear"></div>
+                            </div>
+                            <div class="open-book-header-actions-buttons">
+                                <div class="open-book-header-actions-button"></div>
+                                <div class="open-book-header-actions-button"></div>
+                                <div class="open-book-header-actions-button"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="content">
-                    <div class="html">
+                <div class="open-book-body">
+                    <div class="open-book-timeline">
+                        <div class="open-book-post open-book-post--text">
+
+                        </div>
+                    </div>
+                    <div class="open-book-chats">
 
                     </div>
-                    <div class="css">
-
-                    </div>
-                    <div class="clear"></div>
                 </div>
             </div>
         </div>
@@ -32,6 +42,9 @@
 </template>
 
 <style lang="scss">
+
+    // Browser window based on work by the awesome John Otander
+    // https://codepen.io/johnotander/pen/pfLhy
 
     $bottomColor: #E2E2E1;
     $topColor: lighten($bottomColor, 2%);
@@ -68,52 +81,72 @@
         background-color: lighten($topColor, 10%);
     }
     .browser-window .circles { margin: 5px 11px; }
-    .browser-window .content {
-        margin: 0;
+    .browser-window .browser-content {
         width: 100%;
-        min-height: 50%;
-        display: inline-block;
+        height: 100%;
+        display: block;
         border-radius: 0 0 5px 5px;
         background-color: #fafafa;
     }
 
-    .browser-window .dev-tools {
-        width: 100%;
-        min-height: 50%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .browser-window .dev-tools .bar {
-        margin-top: -4px;
-        border-top: thin solid $topColor;
-        border-bottom: thin solid $topColor;
-        color: $topColor;
-        .dev-bar-content {
-            padding: 10px;
-            float: left;
-        }
-        .close {
-            float: right;
-            border-left: thin solid $topColor;
-            padding: 10px;
-        }
-    }
-
-    .browser-window .dev-tools .content {
-        .html {
-            height: 100%;
-            width: 69%;
-            border-right: thin solid $topColor;
-        }
-        .css {
-            float: right;
-            height: 100%;
-            width: 30%;
-        }
-    }
-
     .clear { clear: both; }
+
+
+    .open-book-container{
+        display: flex;
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .open-book-header{
+        width: 100%;
+        background-color: #690ddc;
+        height: 30px;
+        display: flex;
+
+        &-logo{
+            width: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__icon{
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                background: white;
+            }
+        }
+
+        &-actions{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__search{
+                border-radius: 5px;
+                background: white;
+                width: 40%;
+                height: 10px;
+            }
+
+            &-buttons{
+                width: 100px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            &-button{
+                height: 10px;
+                width: 20px;
+                border-radius: 10%;
+                background: rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
 
 </style>
 
