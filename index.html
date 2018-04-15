@@ -24,10 +24,12 @@
 <body>
 <!-- Site content STARTS -->
 <section class="hero is-fullheight is-primary" id="main">
-    <div class="fullscreen-bg">
-        <video loop muted autoplay poster="" class="fullscreen-bg__video">
-            <source src="<%= require('./src/assets/intro-video.mp4') %>" type="video/mp4">
-        </video>
+    <div class="main-video overlay-black-60">
+        <div class="fullscreen-bg">
+            <video loop muted autoplay poster="" class="fullscreen-bg__video">
+                <source src="<%= require('./src/assets/intro-video.mp4') %>" type="video/mp4">
+            </video>
+        </div>
     </div>
     <div class="hero-head is-primary">
         <header>

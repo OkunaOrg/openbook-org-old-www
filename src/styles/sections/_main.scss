@@ -1,4 +1,18 @@
 
+#main {
+    position: relative;
+}
+
+.main-video {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
 
 // Courtesy of the awesome Luka Cavka
 // https://slicejack.com/fullscreen-html5-video-background-css/
