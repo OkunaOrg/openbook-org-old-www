@@ -27,9 +27,11 @@
                     </div>
                 </div>
                 <div class="open-book-body">
-                    <div class="open-book-body-timeline">
-                        <div class="open-book-post open-book-post--text">
-
+                    <div class="open-book-body-timeline" ref="timeline">
+                        <div class="open-book-post" v-for="post in posts">
+                            <div class="open-book-post-content is-size-2">
+                                {{post.content}}
+                            </div>
                         </div>
                     </div>
                     <div class="open-book-body-chats">
@@ -167,10 +169,14 @@
             height: 100%;
             background: rgba(128, 128, 128, 0.3);
             border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden;
         }
 
         &-chats {
-            margin:10px;
+            margin: 10px;
             width: 20%;
             height: 100%;
             background: rgba(128, 128, 128, 0.3);
@@ -178,12 +184,73 @@
         }
     }
 
+    .open-book-post {
+        display: flex;
+        color: black;
+        margin-bottom: 20px;
+        background: #ffffff;
+        width: 100%;
+        height: 70px;
+        border-radius: 5px;
+
+        &-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
 </style>
 
 <script>
+    const jQuery = require('jquery');
+
     export default {
-        created() {
-            console.log('Hi');
+        data(){
+            return {
+                posts: [
+                    {
+                        content: '🎉'
+                    },
+                    {
+                        content: '🙈'
+                    },
+                    {
+                        content: '🤔'
+                    },
+                    {
+                        content: '😎'
+                    },
+                    {
+                        content: '😮'
+                    },
+                    {
+                        content: '😘'
+                    }
+                ]
+            }
+        },
+        mounted() {
+            const timelineComponent = this.$refs.timeline;
+            const slider = jQuery(timelineComponent).slick({
+                infite: true,
+                vertical: true,
+                autoplay: false,
+                autoplaySpeed: 1500,
+                pauseOnFocus: false,
+                pauseOnHover: false,
+                draggable: false,
+                arrows: false,
+            });
+
+            this.intervalHandle = setInterval(() => {
+                jQuery(timelineComponent).slick('slickPrev');
+            }, 1500);
+        },
+        destroy() {
+            if (this.intervalHandle) clearInterval(this.intervalHandle);
         }
     }
 </script>
