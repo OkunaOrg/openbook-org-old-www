@@ -1,0 +1,11 @@
+
+.is-generic-social-media{
+    color: white;
+
+    background-color: #4f6398 !important;
+
+    &:hover, &:focus{
+        background-color: #4b5a98 !important;
+        color: white;
+    }
+}
