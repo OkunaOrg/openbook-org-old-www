@@ -1,11 +1,11 @@
 
 .is-generic-social-media{
-    color: white;
+    color: $generic-social-media-color-invert;
 
-    background-color: #4f6398 !important;
+    background-color: $generic-social-media-color !important;
 
     &:hover, &:focus{
-        background-color: #4b5a98 !important;
-        color: white;
+        background-color: $generic-social-media-color !important;
+        color: $generic-social-media-color-invert;
     }
 }
