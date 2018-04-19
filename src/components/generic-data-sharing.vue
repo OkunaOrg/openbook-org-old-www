@@ -34,7 +34,7 @@
                             <span>your public profile, friend list, birthday, likes and email address. </span>
                             <div>
                                 <b-tooltip
-                                    label="Your public profile includes name, profile picture, age, range, gender, language, country and other public info."
+                                    label="Your public profile includes name, profile picture, age range, gender, language, country and other public info."
                                     position="is-bottom" type="is-dark" multilined>
                                     <i class="icon is-small fas fa-info-circle info-icon"></i>
                                 </b-tooltip>
@@ -44,6 +44,11 @@
                             <button class="button is-generic-social-media is-medium" @click="goToStep3()">
                                 Continue
                             </button>
+                        </div>
+                        <div class="column is-12 has-text-centered">
+                            <a class="is-medium info-icon" @click="goToStep1()">
+                                Cancel
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -99,15 +104,12 @@
 </style>
 
 <script>
-    import BTooltip from "../../node_modules/buefy/src/components/tooltip/Tooltip.vue";
 
     export default {
-        components: {BTooltip},
         name: 'ob-generic-data-sharing',
         data() {
             return {
-                stepNumber: 1,
-                pressedContinue: false
+                stepNumber: 1
             }
         },
         methods: {
