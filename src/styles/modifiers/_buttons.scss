@@ -9,3 +9,14 @@
         color: $generic-social-media-color-invert;
     }
 }
+
+
+.is-reddit{
+    color: $reddit-color-invert;
+    background-color: $reddit-color;
+
+    &:hover, &:focus{
+        background-color: $reddit-color !important;
+        color: $reddit-color-invert;
+    }
+}
