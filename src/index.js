@@ -7,14 +7,23 @@ require('./scripts/typewriter.exec.js');
 require('./scripts/fontawesome-all.exec.js');
 
 import Vue from 'vue';
+import Buefy from 'buefy'
+import 'buefy/lib/buefy.css'
+
+Vue.use(Buefy);
+
 import obBrowser from './components/browser.vue';
+import obGenericDataSharing from './components/generic-data-sharing.vue';
+import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
 
 const appElement = document.querySelector('#app');
 
 new Vue({
     el: appElement,
     components: {
-        obBrowser
+        obBrowser,
+        obGenericDataSharing,
+        obOpenbookDataSharing
     },
     mounted() {
         this.initHello();
