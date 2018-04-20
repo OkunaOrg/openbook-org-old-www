@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div v-else-if="stepNumber === 2" class="second-step">
-                    <div class="columns is-multiline">
+                    <div class="columns is-multiline is-centered">
                         <div class="column is-12 has-text-centered">
                             <button class="button is-success is-large is-outlined app-logo" disabled>
                                 <i class="fas fa-music app-logo__icon"></i>
@@ -46,10 +46,34 @@
                             <div class="section-separator"></div>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <div>
-                                <strong>Songipy</strong> will receive:
+                            <span>In order to continue, <strong>Songipy</strong> requires your</span>
+                            <span v-for="(dataItem, index) of requiredSharedData">
+                                <span v-if="index === (requiredSharedData.length - 1)">
+                                    and
+                                </span>
+                                <span>
+                                    {{dataItem.readableName}}
+                                </span>
+                                <span v-if="index !== (requiredSharedData.length - 2 ) && index !== (requiredSharedData.length - 1)">
+                                    , &nbsp;
+                                </span>
+                                <span v-if="index === (requiredSharedData.length - 1)">
+                                    .
+                                </span>
+                            </span>
+                        </div>
+                        <div class="column is-9">
+                            <div class="field">
+                                <b-checkbox size="is-medium" v-model="optionalDataSharingEnabled">
+                                    <div class="is-size-7">
+                                        <strong>Optionally</strong>, it would also like access to
+                                        <span>your</span>
+                                        <span v-for="(dataItem, index) of optionalSharedData">
+                                {{ index === optionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
+                                    </span>
+                                    </div>
+                                </b-checkbox>
                             </div>
-                            <span>your name, profile picture, age range, gender, language, country of birth, friend list, birthday, likes and email address. </span>
                         </div>
                         <div class="column is-12 has-text-centered">
                             <button class="button is-outlined is-small" @click="goToStep3()">
@@ -60,35 +84,6 @@
                                     <i class="fas fa-pencil-alt"></i>
                                 </span>
                             </button>
-                        </div>
-                        <div class="column is-12 has-text-centered">
-                            <b-collapse :open="false">
-                                <button slot="trigger" class="button is-primary is-outlined is-small">
-                                <span>
-                                    Show shared data
-                                </span>
-                                    <span class="icon">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                                </button>
-                                <div class="notification data-container">
-                                    <div class="content is-small">
-                                        <p v-for="dataItem of sharedData">
-                                            <strong>
-                                                {{ dataItem.name }}:
-                                            </strong>
-                                            <span v-if="dataItem.type === 'text'">
-                                                {{dataItem.value}}
-                                            </span>
-                                            <a v-else-if="dataItem.type === 'list'">
-                                                <span>
-                                                    Open list ↗
-                                                </span>
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </b-collapse>
                         </div>
                         <div class="column is-12">
                             <div class="section-separator"></div>
@@ -177,6 +172,7 @@
         data() {
             return {
                 stepNumber: 2,
+                optionalDataSharingEnabled: false,
                 availableData: [
                     {
                         readableName: 'name',
@@ -187,10 +183,18 @@
                         shared: true
                     },
                     {
+                        readableName: 'email address',
+                        name: 'email',
+                        type: 'text',
+                        value: 'badmf@pfiction.com',
+                        required: true,
+                        shared: true
+                    },
+                    {
                         readableName: 'age range',
                         name: 'age_range',
                         type: 'text',
-                        value: 'Jules Winnfield',
+                        value: '35-40',
                         required: false,
                         shared: true
                     },
@@ -271,15 +275,7 @@
                         ],
                         required: false,
                         shared: true
-                    },
-                    {
-                        readableName: 'email address',
-                        name: 'email',
-                        type: 'text',
-                        value: 'badmf@pfiction.com',
-                        required: true,
-                        shared: true
-                    },
+                    }
                 ]
             }
         },
@@ -287,6 +283,16 @@
             sharedData() {
                 return this.availableData.filter((dataItem) => {
                     return dataItem.shared;
+                });
+            },
+            requiredSharedData() {
+                return this.availableData.filter((dataItem) => {
+                    return dataItem.required;
+                });
+            },
+            optionalSharedData() {
+                return this.availableData.filter((dataItem) => {
+                    return !dataItem.required;
                 });
             }
         },
