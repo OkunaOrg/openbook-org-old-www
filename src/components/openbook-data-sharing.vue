@@ -69,7 +69,10 @@
                                     <div class="is-size-7">
                                         <strong>Optionally</strong>, you would like to share
                                         <span>your</span>
-                                        <span v-for="(dataItem, index) of enabledOptionalSharedData">
+                                        <span v-if="enabledOptionalSharedData.length === 1">
+                                            {{enabledOptionalSharedData[0].readableName}}
+                                        </span>
+                                        <span v-else v-for="(dataItem, index) of enabledOptionalSharedData">
                                 {{ index === enabledOptionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
                                     </span>
                                     </div>
@@ -100,7 +103,7 @@
                             </button>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <b-collapse :open="false">
+                            <b-collapse :open.sync="inspectDataOpen">
                                 <button class="button is-transparent is-size-7 is-borderless" slot="trigger">
                                     <span>
                                         Inspect shared data
@@ -277,6 +280,7 @@
                 stepNumber: 2,
                 optionalDataSharingEnabled: false,
                 customOptionalDataSharingEnabled: false,
+                inspectDataOpen: false,
                 availableData: [
                     {
                         readableName: 'name',
