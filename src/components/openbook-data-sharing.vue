@@ -37,7 +37,7 @@
                                 It has successfully met our privacy and security standards.
                             </div>
                             <div class="is-size-7">
-                                <a @click="justAPrototype()">
+                                <a @click="wantsToLearnMoreAboutSecureApps()">
                                     Learn more
                                 </a>
                             </div>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <button class="button is-outlined is-small">
+                            <button class="button is-outlined is-small" @click="wantsToEditOptionalSharedData()">
                                 <span>
                                     Edit shared optional data
                                 </span>
@@ -151,7 +151,7 @@
                                 </strong>
                             </div>
                             <span>
-                                <strong>Open</strong>book has now shared your information with the application.
+                                Openbook has now shared your information with Songipy.
                             </span>
                         </div>
                         <div class="column is-12 has-text-centered">
@@ -159,7 +159,7 @@
                                 <span class="icon is-small">
                                     <i class="fas fa-sync-alt"></i>
                                 </span>
-                                <span>  Restart example</span>
+                                <span>  Restart prototype</span>
                             </button>
                         </div>
                     </div>
@@ -194,10 +194,7 @@
 
 <script>
 
-    import BCollapse from "../../node_modules/buefy/src/components/collapse/Collapse.vue";
-
     export default {
-        components: {BCollapse},
         name: 'ob-openbook-data-sharing',
         data() {
             return {
@@ -346,11 +343,22 @@
             goToStep4() {
                 this.stepNumber = 4;
             },
-            justAPrototype() {
-                this.$toast.open({
-                    message: 'Whoops, this is just a prototype, you\'ll find this info below.',
-                    type: 'is-info',
-                    position: 'is-bottom'
+            wantsToEditOptionalSharedData() {
+                this.$dialog.alert({
+                    message: '<div class="content"><p>In the non-prototype version, this will display a list where you can select which of the optional data you would like to share with the application.</p> <p>For example, apart from the mandatory name and email, you would also like to share your profile picture for them to use as your <i>Songipy</i> profile picture.</p></div>',
+                    confirmText: 'Got it!'
+                })
+            },
+            wantsToLearnMoreAboutSecureApps() {
+                this.$dialog.alert({
+                    message: `
+                        <div class="content">
+                        <p>In the non-prototype version, this will redirect you to a page with detailed information on secure applications.</p>
+                        <p>Brifly put, secure applications are applications that don't abuse our data sharing system, allow the deletion of your data from their systems and know at all times where your data is.</p>
+                        <p>More information about this follows below.</p>
+                        </div>
+                    `,
+                    confirmText: 'Got it!'
                 })
             }
         }
