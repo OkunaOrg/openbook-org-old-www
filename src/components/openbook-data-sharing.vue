@@ -1,7 +1,7 @@
 <template>
     <div class="columns is-mobile">
         <div class="column">
-            <div class="box step-container" v-bind:class="{}">
+            <div class="box step-container">
                 <div v-if="stepNumber === 1">
                     <div class="columns is-mobile is-multiline">
                         <div class="column is-12 has-text-centered">
@@ -277,7 +277,7 @@
         name: 'ob-openbook-data-sharing',
         data() {
             return {
-                stepNumber: 2,
+                stepNumber: 1,
                 optionalDataSharingEnabled: false,
                 customOptionalDataSharingEnabled: false,
                 inspectDataOpen: false,

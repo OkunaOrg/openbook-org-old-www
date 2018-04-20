@@ -31,7 +31,15 @@
                             <div>
                                 <strong>WiFi Hotspots App</strong> will receive:
                             </div>
-                            <span>your public profile, friend list, birthday, likes and email address. </span>
+                            <span> your </span>
+                            <span v-for="(dataItem, index) of sharedData">
+                                <span v-if="index === (sharedData.length - 1)">
+                                    and
+                                </span>
+                                <span>{{dataItem.name}}</span>
+                                <span v-if="index !== (sharedData.length - 2 ) && index !== (sharedData.length - 1)">,</span>
+                                <span v-if="index === (sharedData.length - 1)">.</span>
+                            </span>
                             <div>
                                 <b-tooltip
                                     label="Your public profile includes name, profile picture, age range, gender, language, country and other public info."
@@ -41,7 +49,17 @@
                             </div>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <button class="button is-generic-social-media is-medium" @click="goToStep3()">
+                            <a class="button is-borderless" @click="goToStep3()">
+                                <span class="icon">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <span>
+                                    Edit this
+                                </span>
+                            </a>
+                        </div>
+                        <div class="column is-12 has-text-centered">
+                            <button class="button is-generic-social-media is-medium" @click="goToStep4()">
                                 Continue
                             </button>
                         </div>
@@ -52,7 +70,39 @@
                         </div>
                     </div>
                 </div>
-                <div v-else-if="stepNumber === 3">
+                <div v-else-if="stepNumber ===3">
+                    <div class="columns is-mobile is-multiline">
+                        <div class="column is-12">
+                            <div class="columns">
+                                <div class="column is-narrow">
+                                    <button class="button" @click="goToStep2()">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span>Back</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-12" v-for="dataItem of availableData">
+                            <div class="columns is-mobile">
+                                <div class="column is-10 is-size-6">
+                                    <div>
+                                        <strong>{{dataItem.name}}</strong>
+                                        <span v-if="dataItem.required">(required)</span>
+                                    </div>
+                                    <div class="is-size-7">
+                                        {{dataItem.description}}
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <b-checkbox :disabled="dataItem.required" v-model="dataItem.enabled" size="is-small"></b-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="stepNumber === 4">
                     <div class="columns is-mobile is-multiline">
                         <div class="column is-12 has-text-centered">
                             <span class="icon">
@@ -109,7 +159,47 @@
         name: 'ob-generic-data-sharing',
         data() {
             return {
-                stepNumber: 1
+                stepNumber: 3,
+                publicProfileShared: true,
+                availableData: [
+                    {
+                        name: 'public profile',
+                        required: true,
+                        enabled: true,
+                        description: 'John Doe, profile picture, 33+ years old, male and other public info'
+                    },
+                    {
+                        name: 'friend list',
+                        required: false,
+                        enabled: true,
+                        description: 'Mike Chowder, Barbara Lamb and 590 others.'
+                    },
+                    {
+                        name: 'birthday',
+                        required: false,
+                        enabled: true,
+                        description: 'January, 12, 1990'
+                    },
+                    {
+                        name: 'likes',
+                        required: false,
+                        enabled: true,
+                        description: 'The Daily Show, NBC and 978 others'
+                    },
+                    {
+                        name: 'email address',
+                        required: false,
+                        enabled: true,
+                        description: 'john@doe.com',
+                    },
+                ]
+            }
+        },
+        computed: {
+            sharedData() {
+                return this.availableData.filter((dataItem) => {
+                    return dataItem.enabled;
+                });
             }
         },
         methods: {
@@ -121,6 +211,9 @@
             },
             goToStep3() {
                 this.stepNumber = 3;
+            },
+            goToStep4() {
+                this.stepNumber = 4;
             }
         }
     }
