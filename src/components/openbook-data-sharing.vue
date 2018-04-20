@@ -63,11 +63,24 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="column is-9">
+                        <div v-if="customOptionalDataSharingEnabled && enabledOptionalSharedData.length > 0" class="column is-9">
                             <div class="field">
                                 <b-checkbox size="is-medium" v-model="optionalDataSharingEnabled">
                                     <div class="is-size-7">
-                                        <strong>Optionally</strong>, it would also like access to
+                                        <strong>Optionally</strong>, you would like to share
+                                        <span>your</span>
+                                        <span v-for="(dataItem, index) of enabledOptionalSharedData">
+                                {{ index === enabledOptionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
+                                    </span>
+                                    </div>
+                                </b-checkbox>
+                            </div>
+                        </div>
+                        <div v-else class="column is-9">
+                            <div class="field">
+                                <b-checkbox size="is-medium" v-model="optionalDataSharingEnabled">
+                                    <div class="is-size-7">
+                                        <strong>Optionally</strong>, it would also like to access
                                         <span>your</span>
                                         <span v-for="(dataItem, index) of optionalSharedData">
                                 {{ index === optionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
@@ -77,7 +90,7 @@
                             </div>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <button class="button is-outlined is-small" @click="wantsToEditOptionalSharedData()">
+                            <button class="button is-outlined is-small" @click="goToStep3()">
                                 <span>
                                     Edit shared optional data
                                 </span>
@@ -141,8 +154,54 @@
                         </div>
                     </div>
                 </div>
-                <div v-else-if="stepNumber === 3" class="third-step">
-
+                <div v-else-if="stepNumber === 3">
+                    <div class="columns is-mobile is-multiline is-marginless">
+                        <div class="column is-12">
+                            <div class="columns">
+                                <div class="column is-narrow">
+                                    <button class="button" @click="goToStep2()">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span>Back</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns is-mobile is-multiline data-items">
+                            <div class="column is-12 data-item" v-for="dataItem of availableData">
+                                <div class="columns is-mobile">
+                                    <div class="column is-10">
+                                        <div class="is-size-6" @click="wantsToToggleItem(dataItem)">
+                                            <strong>{{dataItem.readableName}}</strong>
+                                            <span v-if="dataItem.required">(required)</span>
+                                        </div>
+                                        <div class="is-size-7">
+                                         <span v-if="dataItem.type === 'text'">
+                                                {{dataItem.value}}
+                                            </span>
+                                            <a v-else-if="dataItem.type === 'list'"
+                                               @click="wantsToDisplayListWithName(dataItem.readableName)">
+                                                <span>
+                                                    Open list ↗
+                                                </span>
+                                            </a>
+                                            <a v-else-if="dataItem.type === 'image'" :href="dataItem.value"
+                                               target="_blank">
+                                                <span>
+                                                    Open image ↗
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <b-checkbox v-model="dataItem.enabled" :disabled="dataItem.required"
+                                                    size="is-small"></b-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div v-else-if="stepNumber === 4">
                     <div class="columns is-mobile is-multiline">
@@ -197,6 +256,16 @@
     .data-container {
         margin-top: 1rem;
     }
+
+    .data-items{
+        max-height: 400px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .data-item{
+        cursor: pointer;
+    }
 </style>
 
 <script>
@@ -207,6 +276,7 @@
             return {
                 stepNumber: 2,
                 optionalDataSharingEnabled: false,
+                customOptionalDataSharingEnabled: false,
                 availableData: [
                     {
                         readableName: 'name',
@@ -230,7 +300,7 @@
                         type: 'image',
                         value: 'https://vignette.wikia.nocookie.net/pulpfiction/images/b/b6/Jules.jpg/revision/latest?cb=20090501131406',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'age range',
@@ -238,7 +308,7 @@
                         type: 'text',
                         value: '35-40',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'gender',
@@ -246,7 +316,7 @@
                         type: 'text',
                         value: 'male',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'language',
@@ -254,7 +324,7 @@
                         type: 'text',
                         value: 'en_US',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'country of birth',
@@ -262,7 +332,7 @@
                         type: 'text',
                         value: 'US',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'friends',
@@ -270,7 +340,7 @@
                         type: 'list',
                         value: [],
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'birthday',
@@ -278,7 +348,7 @@
                         type: 'text',
                         value: '25-3-1997',
                         required: false,
-                        enabled: true
+                        enabled: false
                     },
                     {
                         readableName: 'likes',
@@ -286,7 +356,7 @@
                         type: 'list',
                         value: [],
                         required: false,
-                        enabled: true
+                        enabled: false
                     }
                 ]
             }
@@ -323,23 +393,18 @@
                 this.stepNumber = 2;
             },
             goToStep3() {
+                this.customOptionalDataSharingEnabled = true;
                 this.stepNumber = 3;
             },
             goToStep4() {
                 this.stepNumber = 4;
-            },
-            wantsToEditOptionalSharedData() {
-                this.$dialog.alert({
-                    message: '<div class="content"><p>In the non-prototype version, this will display a list where you can select which of the optional data you would like to share with the application.</p> <p>For example, apart from the mandatory name and email, you would also like to share your profile picture for them to use as your <i>Songipy</i> profile picture.</p></div>',
-                    confirmText: 'Got it!'
-                })
             },
             wantsToLearnMoreAboutSecureApps() {
                 this.$dialog.alert({
                     message: `
                         <div class="content">
                         <p>In the non-prototype version, this will redirect you to a page with detailed information on secure applications.</p>
-                        <p>Brifly put, secure applications are applications that don't abuse our data sharing system, allow the deletion of your data from their systems and know at all times where your data is.</p>
+                        <p>Brifly put, secure applications are applications that don't abuse the sharing system, allow the deletion of your data from their systems and know at all times where your data is.</p>
                         <p>More information about this follows below.</p>
                         </div>
                     `,
@@ -352,6 +417,11 @@
                     message,
                     confirmText: 'Got it!'
                 });
+            },
+            wantsToToggleItem(dataItem) {
+                if (!dataItem.required) {
+                    dataItem.enabled = !dataItem.enabled;
+                }
             }
         }
     }
