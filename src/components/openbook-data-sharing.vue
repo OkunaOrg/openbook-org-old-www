@@ -63,7 +63,8 @@
                                 </span>
                             </span>
                         </div>
-                        <div v-if="customOptionalDataSharingEnabled && enabledOptionalSharedData.length > 0" class="column is-9">
+                        <div v-if="customOptionalDataSharingEnabled"
+                             class="column is-9">
                             <div class="field">
                                 <b-checkbox size="is-medium" v-model="optionalDataSharingEnabled">
                                     <div class="is-size-7">
@@ -73,7 +74,8 @@
                                             {{enabledOptionalSharedData[0].readableName}}
                                         </span>
                                         <span v-else v-for="(dataItem, index) of enabledOptionalSharedData">
-                                {{ index === enabledOptionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
+                                {{ index === enabledOptionalSharedData.length - 1 ? 'and ' + dataItem.readableName : dataItem.readableName + ', '
+                                            }}
                                     </span>
                                     </div>
                                 </b-checkbox>
@@ -86,7 +88,8 @@
                                         <strong>Optionally</strong>, it would also like to access
                                         <span>your</span>
                                         <span v-for="(dataItem, index) of optionalSharedData">
-                                {{ index === optionalSharedData.length - 1  ? 'and ' + dataItem.readableName : dataItem.readableName + ', ' }}
+                                {{ index === optionalSharedData.length - 1 ? 'and ' + dataItem.readableName : dataItem.readableName + ', '
+                                            }}
                                     </span>
                                     </div>
                                 </b-checkbox>
@@ -264,13 +267,13 @@
         margin-top: 1rem;
     }
 
-    .data-items{
+    .data-items {
         max-height: 400px;
         overflow-x: hidden;
         overflow-y: scroll;
     }
 
-    .data-item{
+    .data-item {
         cursor: pointer;
     }
 </style>
@@ -369,6 +372,17 @@
                 ]
             }
         },
+        watch: {
+            optionalDataSharingEnabled: function (optionalDataSharingEnabled) {
+                if (!this.customOptionalDataSharingEnabled) {
+                    if (optionalDataSharingEnabled) {
+                        this.enableAllOptionalSharedData();
+                    } else {
+                        this.disableAllOptionalSharedData();
+                    }
+                }
+            }
+        },
         computed: {
             requiredSharedData() {
                 return this.availableData.filter((dataItem) => {
@@ -394,10 +408,31 @@
             }
         },
         methods: {
+            disableAllOptionalSharedData() {
+                this.availableData = this.availableData.map((dataItem) => {
+                    if (!dataItem.required) {
+                        dataItem.enabled = false;
+                    }
+                    return dataItem;
+                });
+            },
+            enableAllOptionalSharedData() {
+                this.availableData = this.availableData.map((dataItem) => {
+                    if (!dataItem.required) {
+                        dataItem.enabled = true;
+                        dataItem.enabledByUser = false;
+                    }
+                    return dataItem;
+                });
+            },
             goToStep1() {
                 this.stepNumber = 1;
             },
             goToStep2() {
+                if(this.enabledOptionalSharedData.length === 0){
+                    this.customOptionalDataSharingEnabled = false;
+                    this.optionalDataSharingEnabled = false;
+                }
                 this.stepNumber = 2;
             },
             goToStep3() {
