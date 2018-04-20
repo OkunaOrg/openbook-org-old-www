@@ -110,6 +110,11 @@
                                                     Open list ↗
                                                 </span>
                                             </a>
+                                            <a v-else-if="dataItem.type === 'image'">
+                                                <a :href="dataItem.value" target="_blank">
+                                                    Open image ↗
+                                                </a>
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
@@ -215,6 +220,14 @@
                         type: 'text',
                         value: 'badmf@pfiction.com',
                         required: true,
+                        enabled: true
+                    },
+                    {
+                        readableName: 'profile picture',
+                        name: 'profile_picture',
+                        type: 'image',
+                        value: 'https://vignette.wikia.nocookie.net/pulpfiction/images/b/b6/Jules.jpg/revision/latest?cb=20090501131406',
+                        required: false,
                         enabled: true
                     },
                     {
