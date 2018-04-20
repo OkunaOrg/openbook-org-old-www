@@ -242,6 +242,10 @@
     .step-container {
         position: relative;
         max-width: 400px;
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .app-logo {
@@ -408,7 +412,7 @@
                     message: `
                         <div class="content">
                         <p>In the non-prototype version, this will redirect you to a page with detailed information on secure applications.</p>
-                        <p>Brifly put, secure applications are applications that don't abuse the sharing system, allow the deletion of your data from their systems and know at all times where your data is.</p>
+                        <p>Brifly put, secure applications are applications that don't abuse the data sharing system, allow the deletion of your data from their systems and know at all times where your data is.</p>
                         <p>More information about this follows below.</p>
                         </div>
                     `,

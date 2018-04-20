@@ -32,13 +32,16 @@
                                 <strong>WiFi Hotspots App</strong> will receive:
                             </div>
                             <span> your </span>
-                            <span v-for="(dataItem, index) of sharedData">
+                            <span v-for="(dataItem, index) of sharedData" v-if="sharedData.length > 1">
                                 <span v-if="index === (sharedData.length - 1)">
                                     and
                                 </span>
                                 <span>{{dataItem.name}}</span>
                                 <span v-if="index !== (sharedData.length - 2 ) && index !== (sharedData.length - 1)">,</span>
                                 <span v-if="index === (sharedData.length - 1)">.</span>
+                            </span>
+                            <span v-else>
+                                {{ sharedData[0].name }}
                             </span>
                             <div>
                                 <b-tooltip
@@ -138,6 +141,10 @@
     .step-container {
         position: relative;
         max-width: 400px;
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .app-logo {
@@ -159,7 +166,7 @@
         name: 'ob-generic-data-sharing',
         data() {
             return {
-                stepNumber: 3,
+                stepNumber: 1,
                 publicProfileShared: true,
                 availableData: [
                     {
