@@ -54,7 +54,8 @@
                                 <span>
                                     {{dataItem.readableName}}
                                 </span>
-                                <span v-if="index !== (requiredSharedData.length - 2 ) && index !== (requiredSharedData.length - 1)">
+                                <span
+                                    v-if="index !== (requiredSharedData.length - 2 ) && index !== (requiredSharedData.length - 1)">
                                     , &nbsp;
                                 </span>
                                 <span v-if="index === (requiredSharedData.length - 1)">
@@ -76,14 +77,43 @@
                             </div>
                         </div>
                         <div class="column is-12 has-text-centered">
-                            <button class="button is-outlined is-small" @click="goToStep3()">
+                            <button class="button is-outlined is-small">
                                 <span>
-                                    Edit shared data
+                                    Edit shared optional data
                                 </span>
                                 <span class="icon">
                                     <i class="fas fa-pencil-alt"></i>
                                 </span>
                             </button>
+                        </div>
+                        <div class="column is-12 has-text-centered">
+                            <b-collapse :open="false">
+                                <button class="button is-transparent is-size-7 is-borderless" slot="trigger">
+                                    <span>
+                                        Inspect shared data
+                                    </span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </button>
+                                <div class="notification data-container">
+                                    <div class="content is-small">
+                                        <p v-for="dataItem of sharedData">
+                                            <strong>
+                                                {{ dataItem.name }}:
+                                            </strong>
+                                            <span v-if="dataItem.type === 'text'">
+                                                {{dataItem.value}}
+                                            </span>
+                                            <a v-else-if="dataItem.type === 'list'">
+                                                <span>
+                                                    Open list ↗
+                                                </span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </b-collapse>
                         </div>
                         <div class="column is-12">
                             <div class="section-separator"></div>
@@ -121,7 +151,7 @@
                                 </strong>
                             </div>
                             <span>
-                                The social network has now shared your information with the application.
+                                <strong>Open</strong>book has now shared your information with the application.
                             </span>
                         </div>
                         <div class="column is-12 has-text-centered">
@@ -180,7 +210,7 @@
                         type: 'text',
                         value: 'Jules Winnfield',
                         required: true,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'email address',
@@ -188,7 +218,7 @@
                         type: 'text',
                         value: 'badmf@pfiction.com',
                         required: true,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'age range',
@@ -196,7 +226,7 @@
                         type: 'text',
                         value: '35-40',
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'gender',
@@ -204,7 +234,7 @@
                         type: 'text',
                         value: 'male',
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'language',
@@ -212,7 +242,7 @@
                         type: 'text',
                         value: 'en_US',
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'country of birth',
@@ -220,7 +250,7 @@
                         type: 'text',
                         value: 'US',
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'friend list',
@@ -245,7 +275,7 @@
                             }
                         ],
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'birthday',
@@ -253,7 +283,7 @@
                         type: 'text',
                         value: '25-3-1997',
                         required: false,
-                        shared: true
+                        enabled: true
                     },
                     {
                         readableName: 'likes',
@@ -274,17 +304,12 @@
                             }
                         ],
                         required: false,
-                        shared: true
+                        enabled: true
                     }
                 ]
             }
         },
         computed: {
-            sharedData() {
-                return this.availableData.filter((dataItem) => {
-                    return dataItem.shared;
-                });
-            },
             requiredSharedData() {
                 return this.availableData.filter((dataItem) => {
                     return dataItem.required;
@@ -294,6 +319,18 @@
                 return this.availableData.filter((dataItem) => {
                     return !dataItem.required;
                 });
+            },
+            enabledOptionalSharedData() {
+                return this.optionalSharedData.filter((dataItem) => {
+                    return dataItem.enabled;
+                });
+            },
+            sharedData() {
+                let sharedData = this.requiredSharedData;
+                if (this.optionalDataSharingEnabled) {
+                    sharedData = sharedData.concat(this.enabledOptionalSharedData)
+                }
+                return sharedData;
             }
         },
         methods: {

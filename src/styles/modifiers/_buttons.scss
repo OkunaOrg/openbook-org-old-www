@@ -20,3 +20,9 @@
         color: $reddit-color-invert;
     }
 }
+
+
+.is-borderless{
+    border: none !important;
+    &:focus {outline:0;}
+}
