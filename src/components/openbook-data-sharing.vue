@@ -105,15 +105,17 @@
                                             <span v-if="dataItem.type === 'text'">
                                                 {{dataItem.value}}
                                             </span>
-                                            <a v-else-if="dataItem.type === 'list'">
+                                            <a v-else-if="dataItem.type === 'list'"
+                                               @click="wantsToDisplayListWithName(dataItem.readableName)">
                                                 <span>
                                                     Open list ↗
                                                 </span>
                                             </a>
-                                            <a v-else-if="dataItem.type === 'image'">
-                                                <a :href="dataItem.value" target="_blank">
+                                            <a v-else-if="dataItem.type === 'image'" :href="dataItem.value"
+                                               target="_blank">
+                                                <span>
                                                     Open image ↗
-                                                </a>
+                                                </span>
                                             </a>
                                         </p>
                                     </div>
@@ -263,27 +265,10 @@
                         enabled: true
                     },
                     {
-                        readableName: 'friend list',
+                        readableName: 'friends',
                         name: 'friends_list',
                         type: 'list',
-                        value: [
-                            {
-                                name: 'Vincent Vega',
-                                openBookId: '@vvega'
-                            },
-                            {
-                                name: 'John Doe',
-                                openBookId: '@doejoe'
-                            },
-                            {
-                                name: 'Mike Thompson',
-                                openBookId: '@mikethompsn'
-                            },
-                            {
-                                name: 'Long Johnson',
-                                openBookId: '@ohlongj'
-                            }
-                        ],
+                        value: [],
                         required: false,
                         enabled: true
                     },
@@ -299,20 +284,7 @@
                         readableName: 'likes',
                         name: 'user_likes',
                         type: 'list',
-                        value: [
-                            {
-                                name: 'Jack Rabbit Slim\'s Restaurant',
-                                openBookId: '@jackrabbits'
-                            },
-                            {
-                                name: 'Suits & Co.',
-                                openBookId: '@jackrabbits'
-                            },
-                            {
-                                name: 'Crown Pawn Shop',
-                                openBookId: '@crownpawn'
-                            }
-                        ],
+                        value: [],
                         required: false,
                         enabled: true
                     }
@@ -373,6 +345,13 @@
                     `,
                     confirmText: 'Got it!'
                 })
+            },
+            wantsToDisplayListWithName(name) {
+                const message = `In the non-prototype version this would open a list with the full list of your ${name}`;
+                this.$dialog.alert({
+                    message,
+                    confirmText: 'Got it!'
+                });
             }
         }
     }
