@@ -104,6 +104,10 @@
         &--open {
             display: block;
         }
+
+        @media (min-width: 1090px) {
+            display: none !important;
+        }
     }
 
     .navbar-close {
