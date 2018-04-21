@@ -28,6 +28,7 @@ import obHamburger from './components/hamburger.vue';
 import obMobileMenu from './components/mobile-menu.vue';
 import obGenericDataSharing from './components/generic-data-sharing.vue';
 import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
+import obScrollToTop from './components/scroll-to-top.vue';
 
 const appElement = document.querySelector('#app');
 
@@ -38,7 +39,8 @@ new Vue({
         obGenericDataSharing,
         obOpenbookDataSharing,
         obHamburger,
-        obMobileMenu
+        obMobileMenu,
+        obScrollToTop
     },
     mounted() {
         this.initHello();
