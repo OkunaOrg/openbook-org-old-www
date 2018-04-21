@@ -8,14 +8,27 @@ require('./scripts/fontawesome-all.exec.js');
 
 import Vue from 'vue';
 import Buefy from 'buefy'
+import VueScrollTo from 'vue-scrollto';
 
 Vue.use(Buefy);
+
+// Current workaround to preserve element hash after scroll
+// See issue here https://github.com/rigor789/vue-scrollto/issues/85
+Vue.use(VueScrollTo, {
+    onDone: function (element) {
+        const elementHasId = typeof element.id !== 'undefined';
+        if (elementHasId) {
+            window.location.hash = element.id;
+        }
+    }
+});
 
 import obBrowser from './components/browser.vue';
 import obHamburger from './components/hamburger.vue';
 import obMobileMenu from './components/mobile-menu.vue';
 import obGenericDataSharing from './components/generic-data-sharing.vue';
 import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
+import obScrollToTop from './components/scroll-to-top.vue';
 
 const appElement = document.querySelector('#app');
 
@@ -26,7 +39,8 @@ new Vue({
         obGenericDataSharing,
         obOpenbookDataSharing,
         obHamburger,
-        obMobileMenu
+        obMobileMenu,
+        obScrollToTop
     },
     mounted() {
         this.initHello();

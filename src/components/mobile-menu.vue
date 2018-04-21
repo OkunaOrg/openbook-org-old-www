@@ -140,7 +140,7 @@
         name: 'ob-mobile-menu',
         data() {
             return {
-                isOpen: true
+                isOpen: false
             }
         },
         mounted() {
@@ -153,7 +153,7 @@
                 eventRemovers.forEach(eventRemover => eventRemover());
             }
         },
-        destroy() {
+        destroyed() {
             this.removeAllEvents();
         },
         methods: {
