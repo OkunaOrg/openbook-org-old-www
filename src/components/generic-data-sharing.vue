@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="column">
-                                    <b-checkbox :disabled="dataItem.required" v-model="dataItem.enabled" size="is-small"></b-checkbox>
+                                    <input type="checkbox" :disabled="dataItem.required" v-model="dataItem.enabled"/>
                                 </div>
                             </div>
                         </div>
