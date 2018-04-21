@@ -45,7 +45,6 @@
         methods: {
             onScroll() {
                 this.visible = (window.pageYOffset > this.visibleOffset);
-                console.log('Im debounced');
             }
         }
     }
