@@ -1,5 +1,5 @@
 const path = require('path');
-
+const webpack = require('webpack');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -17,7 +17,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            vue$: 'vue/dist/vue.js',
+            vue$: 'vue/dist/vue.min',
         }
     },
     module: {
@@ -86,6 +86,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
         new HtmlWebpackPlugin({
             template: './index.html',
             // Inject the js bundle at the end of the body of the given template
