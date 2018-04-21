@@ -410,6 +410,35 @@
             }
         },
         methods: {
+            /**
+             * The step where users are asked to proceed with Openbook
+             */
+            goToStep1() {
+                this.stepNumber = 1;
+            },
+            /**
+             *  The step where users are informed over what they will share
+             */
+            goToStep2() {
+                if (this.enabledOptionalSharedData.length === 0) {
+                    this.customOptionalDataSharingEnabled = false;
+                    this.optionalDataSharingEnabled = false;
+                }
+                this.stepNumber = 2;
+            },
+            /**
+             * The step where users can select which optional data to share
+             */
+            goToStep3() {
+                this.customOptionalDataSharingEnabled = true;
+                this.stepNumber = 3;
+            },
+            /**
+             * The step where users are informed they have shared the data
+             */
+            goToStep4() {
+                this.stepNumber = 4;
+            },
             disableAllOptionalSharedData() {
                 this.availableData = this.availableData.map((dataItem) => {
                     if (!dataItem.required) {
@@ -426,23 +455,6 @@
                     }
                     return dataItem;
                 });
-            },
-            goToStep1() {
-                this.stepNumber = 1;
-            },
-            goToStep2() {
-                if (this.enabledOptionalSharedData.length === 0) {
-                    this.customOptionalDataSharingEnabled = false;
-                    this.optionalDataSharingEnabled = false;
-                }
-                this.stepNumber = 2;
-            },
-            goToStep3() {
-                this.customOptionalDataSharingEnabled = true;
-                this.stepNumber = 3;
-            },
-            goToStep4() {
-                this.stepNumber = 4;
             },
             wantsToLearnMoreAboutSecureApps() {
                 this.$dialog.alert({
