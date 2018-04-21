@@ -35,6 +35,9 @@
         mounted() {
             this.debouncedOnScroll = debounce(this.onScroll, this.scrollDebounce);
             window.addEventListener('scroll', this.debouncedOnScroll);
+
+            // Bootstrap
+            this.onScroll();
         },
         destroyed() {
             window.removeEventListener('scroll', this.debouncedOnScroll);

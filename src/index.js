@@ -30,6 +30,10 @@ import obGenericDataSharing from './components/generic-data-sharing.vue';
 import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
 import obScrollToTop from './components/scroll-to-top.vue';
 
+import twemoji from './directives/twemoji';
+
+Vue.directive('twemoji', twemoji);
+
 const appElement = document.querySelector('#app');
 
 new Vue({

@@ -29,8 +29,8 @@
                 <div class="open-book-body">
                     <div class="open-book-body-timeline" ref="timeline">
                         <div class="open-book-post" v-for="post in posts">
-                            <div class="open-book-post-content is-size-2">
-                                {{post.content}}
+                            <div class="open-book-post-content">
+                                <span class="icon is-medium" v-twemoji>{{post.content}}</span>
                             </div>
                         </div>
                     </div>
