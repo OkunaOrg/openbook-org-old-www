@@ -255,7 +255,7 @@
                 jQuery(timelineComponent).slick('slickPrev');
             }, 1500);
         },
-        destroy() {
+        destroyed() {
             if (this.intervalHandle) clearInterval(this.intervalHandle);
         }
     }

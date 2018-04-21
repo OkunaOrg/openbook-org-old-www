@@ -153,7 +153,7 @@
                 eventRemovers.forEach(eventRemover => eventRemover());
             }
         },
-        destroy() {
+        destroyed() {
             this.removeAllEvents();
         },
         methods: {

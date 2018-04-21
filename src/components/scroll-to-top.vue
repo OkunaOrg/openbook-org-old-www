@@ -1,5 +1,5 @@
 <template>
-    <button class="button is-primary scroll-to-top" v-scroll-to="'#main'">
+    <button class="button is-primary scroll-to-top animated fadeInUp" v-scroll-to="'#main'" v-show="visible">
         <span class="icon">
             <i class="fas fa-arrow-up"></i>
         </span>
@@ -21,7 +21,29 @@
 </style>
 
 <script>
+    import debounce from 'lodash.debounce';
+
     export default {
-        name: 'ob-scroll-to-top'
+        name: 'ob-scroll-to-top',
+        data() {
+            return {
+                visible: false,
+                visibleOffset: 600,
+                scrollDebounce: 10
+            }
+        },
+        mounted() {
+            this.debouncedOnScroll = debounce(this.onScroll, this.scrollDebounce);
+            window.addEventListener('scroll', this.debouncedOnScroll);
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.debouncedOnScroll);
+        },
+        methods: {
+            onScroll() {
+                this.visible = (window.pageYOffset > this.visibleOffset);
+                console.log('Im debounced');
+            }
+        }
     }
 </script>
