@@ -201,8 +201,10 @@
                                         </div>
                                     </div>
                                     <div class="column">
-                                        <b-checkbox v-model="dataItem.enabled" :disabled="dataItem.required"
-                                                    size="is-small"></b-checkbox>
+                                        <b-switch v-model="dataItem.enabled"
+                                                  :disabled="dataItem.required"
+                                                  size="is-small">
+                                        </b-switch>
                                     </div>
                                 </div>
                             </div>
@@ -429,7 +431,7 @@
                 this.stepNumber = 1;
             },
             goToStep2() {
-                if(this.enabledOptionalSharedData.length === 0){
+                if (this.enabledOptionalSharedData.length === 0) {
                     this.customOptionalDataSharingEnabled = false;
                     this.optionalDataSharingEnabled = false;
                 }
