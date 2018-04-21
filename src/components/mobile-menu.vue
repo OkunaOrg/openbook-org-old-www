@@ -25,9 +25,7 @@
                     <ul class="menu-list">
                         <li class="menu-list-item" href="#main" @click="closeMenu()">
                             <a class="menu-list-item__link is-size-5">
-                                <span>
-                                    ✨
-                                </span>
+                                <span class="icon" v-twemoji>✨</span>
                                 <span>
                                     Introduction
                                 </span>
@@ -35,9 +33,7 @@
                         </li>
                         <li class="menu-list-item is-size-5">
                             <a class="menu-list-item__link" href="#why" @click="closeMenu()">
-                                <span>
-                                    🤔
-                                </span>
+                                <span class="icon" v-twemoji>🤔</span>
                                 <span>
                                     Why?
                                 </span>
@@ -45,9 +41,7 @@
                         </li>
                         <li class="menu-list-item is-size-5">
                             <a class="menu-list-item__link" href="#how" @click="closeMenu()">
-                                <span>
-                                    💡
-                                </span>
+                                <span class="icon" v-twemoji>💡</span>
                                 <span>
                                     How?
                                 </span>
@@ -55,9 +49,7 @@
                         </li>
                         <li class="menu-list-item is-size-5">
                             <a class="menu-list-item__link" href="#next" @click="closeMenu()">
-                                <span>
-                                    ➡
-                                </span>
+                                <span class="icon" v-twemoji>➡</span>
                                 <span>
                                     What's next
                                 </span>
@@ -65,9 +57,7 @@
                         </li>
                         <li class="menu-list-item is-size-5">
                             <a class="menu-list-item__link" href="#work" @click="closeMenu()">
-                                <span>
-                                    💪
-                                </span>
+                                <span class="icon" v-twemoji>💪</span>
                                 <span>
                                     Work with us
                                 </span>
@@ -75,9 +65,7 @@
                         </li>
                         <li class="menu-list-item is-size-5">
                             <a class="menu-list-item__link" href="#faq" @click="closeMenu()">
-                                <span>
-                                    📝
-                                </span>
+                                <span class="icon" v-twemoji>📝</span>
                                 <span>
                                     FAQ
                                 </span>
@@ -124,10 +112,14 @@
         &-item{
             &__link{
                 padding: 1rem !important;
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
                 height: 60px;
+
+                span{
+                    margin: 0 0.5rem;
+                }
             }
         }
     }
