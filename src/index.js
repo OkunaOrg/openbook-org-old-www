@@ -12,6 +12,8 @@ import Buefy from 'buefy'
 Vue.use(Buefy);
 
 import obBrowser from './components/browser.vue';
+import obHamburger from './components/hamburger.vue';
+import obMobileMenu from './components/mobile-menu.vue';
 import obGenericDataSharing from './components/generic-data-sharing.vue';
 import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
 
@@ -22,11 +24,12 @@ new Vue({
     components: {
         obBrowser,
         obGenericDataSharing,
-        obOpenbookDataSharing
+        obOpenbookDataSharing,
+        obHamburger,
+        obMobileMenu
     },
     mounted() {
         this.initHello();
-        this.initFullpage();
     },
     methods: {
         initHello() {
@@ -54,9 +57,6 @@ new Vue({
             });
 
             typewriter.start();
-        },
-        initFullpage() {
-
         }
     }
 });
