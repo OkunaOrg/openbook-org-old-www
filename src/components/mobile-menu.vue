@@ -140,7 +140,7 @@
         name: 'ob-mobile-menu',
         data() {
             return {
-                isOpen: true
+                isOpen: false
             }
         },
         mounted() {
