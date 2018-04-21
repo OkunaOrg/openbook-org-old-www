@@ -23,7 +23,7 @@
             <div class="hero-body is-paddingless">
                 <div class="container has-text-centered">
                     <ul class="menu-list">
-                        <li class="menu-list-item">
+                        <li class="menu-list-item" href="#main" @click="closeMenu()">
                             <a class="menu-list-item__link is-size-5">
                                 <span>
                                     ✨
@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="menu-list-item is-size-5">
-                            <a class="menu-list-item__link">
+                            <a class="menu-list-item__link" href="#why" @click="closeMenu()">
                                 <span>
                                     🤔
                                 </span>
@@ -44,7 +44,7 @@
                             </a>
                         </li>
                         <li class="menu-list-item is-size-5">
-                            <a class="menu-list-item__link">
+                            <a class="menu-list-item__link" href="#how" @click="closeMenu()">
                                 <span>
                                     💡
                                 </span>
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li class="menu-list-item is-size-5">
-                            <a class="menu-list-item__link">
+                            <a class="menu-list-item__link" href="#next" @click="closeMenu()">
                                 <span>
                                     ➡
                                 </span>
@@ -64,7 +64,7 @@
                             </a>
                         </li>
                         <li class="menu-list-item is-size-5">
-                            <a class="menu-list-item__link">
+                            <a class="menu-list-item__link" href="#work" @click="closeMenu()">
                                 <span>
                                     💪
                                 </span>
@@ -74,7 +74,7 @@
                             </a>
                         </li>
                         <li class="menu-list-item is-size-5">
-                            <a class="menu-list-item__link">
+                            <a class="menu-list-item__link" href="#faq" @click="closeMenu()">
                                 <span>
                                     📝
                                 </span>
