@@ -9,7 +9,7 @@
                             <a class="navbar-item is-size-4 is-primary-color" href="https://open-book.org">
                                 <strong>Open</strong>book
                             </a>
-                            <button class="button is-primary navbar-close" @click="closeMenu()">
+                            <button class="button is-primary is-outlined is-borderless navbar-close" @click="closeMenu()">
                                 <span class="icon">
                                     <i class="fas fa-times"></i>
                                 </span>
@@ -20,14 +20,70 @@
             </div>
 
             <!-- Hero content: will be in the middle -->
-            <div class="hero-body">
+            <div class="hero-body is-paddingless">
                 <div class="container has-text-centered">
-                    <h1 class="title">
-                        Title
-                    </h1>
-                    <h2 class="subtitle">
-                        Subtitle
-                    </h2>
+                    <ul class="menu-list">
+                        <li class="menu-list-item">
+                            <a class="menu-list-item__link is-size-5">
+                                <span>
+                                    ✨
+                                </span>
+                                <span>
+                                    Introduction
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-list-item is-size-5">
+                            <a class="menu-list-item__link">
+                                <span>
+                                    🤔
+                                </span>
+                                <span>
+                                    Why?
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-list-item is-size-5">
+                            <a class="menu-list-item__link">
+                                <span>
+                                    💡
+                                </span>
+                                <span>
+                                    How?
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-list-item is-size-5">
+                            <a class="menu-list-item__link">
+                                <span>
+                                    ➡
+                                </span>
+                                <span>
+                                    What's next
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-list-item is-size-5">
+                            <a class="menu-list-item__link">
+                                <span>
+                                    💪
+                                </span>
+                                <span>
+                                    Work with us
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-list-item is-size-5">
+                            <a class="menu-list-item__link">
+                                <span>
+                                    📝
+                                </span>
+                                <span>
+                                    FAQ
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -59,6 +115,18 @@
         align-items: center;
         justify-content: center;
     }
+
+    .menu-list{
+        &-item{
+            &__link{
+                padding: 1rem !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 60px;
+            }
+        }
+    }
 </style>
 
 <script>
@@ -68,7 +136,7 @@
         name: 'ob-mobile-menu',
         data() {
             return {
-                isOpen: false
+                isOpen: true
             }
         },
         mounted() {
@@ -86,14 +154,12 @@
         },
         methods: {
             onWantsToOpenMenu() {
-                debugger;
                 this.openMenu();
             },
             onWantsToCloseMenu() {
                 this.closeMenu();
             },
             openMenu(){
-                debugger;
                 this.isOpen = true;
             },
             closeMenu(){
