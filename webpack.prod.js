@@ -15,6 +15,11 @@ module.exports = {
         filename: '[name].[hash:20].js',
         path: buildPath
     },
+    resolve: {
+        alias: {
+            vue$: 'vue/dist/vue.js',
+        }
+    },
     module: {
         rules: [
             {
@@ -25,6 +30,14 @@ module.exports = {
                 options: {
                     presets: ['env']
                 }
+            },
+            {
+                test: /\.exec\.js$/,
+                use: [ 'script-loader' ]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
             },
             {
                 test: /\.(scss|css|sass)$/,
