@@ -27,43 +27,41 @@
 <!-- Site content STARTS -->
 <div id="app">
     <ob-mobile-menu></ob-mobile-menu>
-    <section class="hero is-fullheight is-primary is-bold fullpage-section" id="main">
-        <div class="hero-head is-primary animated fadeInDown">
-            <header>
-                <nav class="navbar" role="navigation" aria-label="main navigation">
-                    <div class="container">
-                        <div class="navbar-brand">
-                            <a class="navbar-item is-size-4" href="https://open-book.org">
-                                <strong>Open</strong>book
-                            </a>
-                            <ob-hamburger></ob-hamburger>
-                        </div>
-                        <div class="navbar-menu">
-                            <div class="navbar-end">
-                                <a class="navbar-item" href="#main" v-scroll-to="'#main'">
-                                    Introduction
-                                </a>
-                                <a class="navbar-item" href="#why" v-scroll-to="'#why'">
-                                    Why
-                                </a>
-                                <a class="navbar-item" href="#how" v-scroll-to="'#how'">
-                                    How
-                                </a>
-                                <a class="navbar-item" href="#next" v-scroll-to="'#next'">
-                                    What's next
-                                </a>
-                                <a class="navbar-item" href="#work" v-scroll-to="'#work'">
-                                    Work with us
-                                </a>
-                                <a class="navbar-item" href="#faq" v-scroll-to="'#faq'">
-                                    FAQ
-                                </a>
-                            </div>
-                        </div>
+    <header>
+        <nav class="navbar is-fixed-top is-primary is-bold" role="navigation" aria-label="main navigation">
+            <div class="container animated fadeInDown">
+                <div class="navbar-brand">
+                    <a class="navbar-item is-size-4" href="https://open-book.org">
+                        <strong>Open</strong>book
+                    </a>
+                    <ob-hamburger></ob-hamburger>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#main" v-scroll-to="'#main'">
+                            Introduction
+                        </a>
+                        <a class="navbar-item" href="#why" v-scroll-to="'#why'">
+                            Why
+                        </a>
+                        <a class="navbar-item" href="#how" v-scroll-to="'#how'">
+                            How
+                        </a>
+                        <a class="navbar-item" href="#next" v-scroll-to="'#next'">
+                            What's next
+                        </a>
+                        <a class="navbar-item" href="#work" v-scroll-to="'#work'">
+                            Work with us
+                        </a>
+                        <a class="navbar-item" href="#faq" v-scroll-to="'#faq'">
+                            FAQ
+                        </a>
                     </div>
-                </nav>
-            </header>
-        </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="hero is-fullheight is-primary is-bold fullpage-section" id="main">
         <div class="hero-body animated fadeIn">
             <div class="container has-text-centered">
                 <h1 class="title is-size-2 is-size-3-mobile">

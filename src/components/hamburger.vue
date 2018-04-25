@@ -8,6 +8,10 @@
 
 <style lang="scss">
 
+    .navbar-burger{
+        color: white !important;
+    }
+
 </style>
 
 <script>
