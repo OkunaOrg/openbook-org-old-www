@@ -35,7 +35,7 @@
                             <a class="menu-list-item__link" href="#why" @click="closeMenu()">
                                 <span class="icon" v-twemoji>🤔</span>
                                 <span>
-                                    Why?
+                                    The why
                                 </span>
                             </a>
                         </li>
@@ -43,7 +43,7 @@
                             <a class="menu-list-item__link" href="#how" @click="closeMenu()">
                                 <span class="icon" v-twemoji>💡</span>
                                 <span>
-                                    How?
+                                    The how
                                 </span>
                             </a>
                         </li>
