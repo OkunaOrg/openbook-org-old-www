@@ -468,7 +468,7 @@
                 })
             },
             wantsToDisplayListWithName(name) {
-                const message = `In the non-prototype version this would open a list with the full list of your ${name}`;
+                const message = `In the non-prototype version this would open a window with all your ${name}`;
                 this.$dialog.alert({
                     message,
                     confirmText: 'Got it!'
