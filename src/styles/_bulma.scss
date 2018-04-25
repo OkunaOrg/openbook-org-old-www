@@ -37,5 +37,10 @@ $family-primary: $family-serif;
 
 .section{
     padding-top: 6rem !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
+}
+
+
+.section-padding-bottom{
+    padding-bottom: 3rem;
 }
