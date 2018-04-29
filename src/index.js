@@ -54,7 +54,8 @@ new Vue({
     methods: {
         initSocialShare(){
             const SocialShareKit = window['SocialShareKit'];
-            SocialShareKit.init();
+            SocialShareKit.init({
+            });
         },
         initHello() {
             // This should have been added by the require of typewriter.exec.js
