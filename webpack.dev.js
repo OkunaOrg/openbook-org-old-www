@@ -18,6 +18,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(ttf|eot|woff|woff2|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]',
+                },
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
@@ -27,7 +34,7 @@ module.exports = {
             },
             {
                 test: /\.exec\.js$/,
-                use: [ 'script-loader' ]
+                use: ['script-loader']
             },
             {
                 test: /\.vue$/,

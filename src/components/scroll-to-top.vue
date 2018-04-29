@@ -17,6 +17,10 @@
         height: $button-size;
         width: $button-size;
         margin: 1rem;
+
+        @media(max-width: 770px) {
+            margin-bottom: 4rem;
+        }
     }
 </style>
 

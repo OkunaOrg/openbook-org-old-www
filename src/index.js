@@ -5,6 +5,7 @@ require('slick-carousel');
 
 require('./scripts/typewriter.exec.js');
 require('./scripts/fontawesome-all.exec.js');
+require('./scripts/social-share.exec.js');
 
 import Vue from 'vue';
 import Buefy from 'buefy'
@@ -48,8 +49,13 @@ new Vue({
     },
     mounted() {
         this.initHello();
+        this.initSocialShare();
     },
     methods: {
+        initSocialShare(){
+            const SocialShareKit = window['SocialShareKit'];
+            SocialShareKit.init();
+        },
         initHello() {
             // This should have been added by the require of typewriter.exec.js
             const Typewriter = window['Typewriter'];
