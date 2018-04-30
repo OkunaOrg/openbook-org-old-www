@@ -30,6 +30,8 @@ import obMobileMenu from './components/mobile-menu.vue';
 import obGenericDataSharing from './components/generic-data-sharing.vue';
 import obOpenbookDataSharing from './components/openbook-data-sharing.vue';
 import obScrollToTop from './components/scroll-to-top.vue';
+import obSharePage from './components/share-page.vue';
+import obScrolledHud from './components/scrolled-hud.vue';
 
 import twemoji from './directives/twemoji';
 
@@ -45,18 +47,12 @@ new Vue({
         obOpenbookDataSharing,
         obHamburger,
         obMobileMenu,
-        obScrollToTop
+        obScrolledHud
     },
     mounted() {
         this.initHello();
-        this.initSocialShare();
     },
     methods: {
-        initSocialShare(){
-            const SocialShareKit = window['SocialShareKit'];
-            SocialShareKit.init({
-            });
-        },
         initHello() {
             // This should have been added by the require of typewriter.exec.js
             const Typewriter = window['Typewriter'];
