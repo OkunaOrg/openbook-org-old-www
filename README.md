@@ -2,7 +2,9 @@
 
 ## What is this?
 
-This is the code for [www.open-book.org](https://www.open-book.org).
+This is the code for the old [www.open-book.org](https://www.open-book.org).
+
+The code for the new one is [here](https://github.com/OpenbookOrg/openbook-org-www).
 
 ## Table of contents
 
